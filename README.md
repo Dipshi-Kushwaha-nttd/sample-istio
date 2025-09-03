@@ -21,7 +21,7 @@ Intercepts all inbound and outbound traffic <br> Provides metrics, logs, and tra
 #### Benefits:
 Encrypts all service-to-service communication <br> Provides strong identity for each service <br> Prevents unauthorized access 
 #### Authorization Policies
-**Default Policy:** Deny-all <br> **Custom Rules:** Specific rules to allow necessary traffic<br> **Function:** Granularly controls which services can communicate with each other 
+**Default Policy:** Deny-all <br> **Custom Rules:** Specific rules to allow necessary traffic<br> **Function:** Granularly controls which services can communicate with each other <br>
 **Service Accounts and RBAC** <br>
 Each component has its dedicated service account <br> Role-based access control limits what each service can do within the cluster<br>  Prevents privilege escalation
 #### Egress Traffic Control
@@ -35,7 +35,11 @@ Kubernetes cluster up and running  kubectl CLI tool installed  Git CLI tool inst
 Install the Istio CLI and deploy Istio components:
 
 ### Install istioctl in Windows
-` wget https://github.com/istio/istio/releases/download/1.27.0/istio-1.27.0-linux-amd64.tar.gz <br> tar -xvf istio-1.27.0-linux-amd64.tar.gz <br> cd istio-1.27.0/ <br> export PATH="$PWD/bin:$PATH" <br> istioctl version `
+<pre> ```bash wget https://github.com/istio/istio/releases/download/1.27.0/istio-1.27.0-linux-amd64.tar.gz
+  tar -xvf istio-1.27.0-linux-amd64.tar.gz 
+  cd istio-1.27.0/ 
+  export PATH="$PWD/bin:$PATH" 
+  istioctl version ``` </pre>
 
 ### Install Istio with the demo profile
 `istioctl install --set profile=demo -y`
