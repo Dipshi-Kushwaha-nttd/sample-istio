@@ -1,2 +1,3 @@
 # sample-istio
-sample istio implementation in k8s
+This is sample istio implementation in k8s.
+
