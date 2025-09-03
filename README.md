@@ -30,7 +30,7 @@ The sidecar injector automatically injects Envoy proxy containers into applicati
   - Prevents impersonation or man-in-the-middle attacks
   - Enables fine-grained authorization based on service identity
 
-- **PeerAuthentication**: Enforces STRICT mTLS between services
+**PeerAuthentication**: Enforces STRICT mTLS between services
   - Peer Authentication is an Istio resource (PeerAuthentication) that configures how mTLS is enforced between peers (i.e., services).
 
   **PeerAuthentication modes:**
@@ -102,9 +102,9 @@ kubectl rollout status deployment/prometheus -n istio-system
 
 ```bash
 # Kiali dashboard
-option1: 
+#option1: 
 istioctl dashboard kiali
-option2:
+#option2:
 kubectl port-forward svc/kiali -n istio-system 20001:20001
 
 # Grafana dashboard
@@ -135,7 +135,7 @@ kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
 kubectl get gateway
 
 #Access the Application
-http://localhost:80/productpage
+http://ingressgateway_service_ip:80/productpage
 
 ```
 #### mTLS Implemtation
@@ -144,7 +144,7 @@ mTLS, or Mutual Transport Layer Security, is a protocol that ensures both the cl
 ```bash
 kubectl apply -f peer-authentication.yaml
 
-# check mTLS in kiali
+# check mTLS in kiali dashboard
 ```
 
 
