@@ -49,11 +49,11 @@ Git CLI tool installed
 Install the Istio CLI and deploy Istio components:
 
 ### Install istioctl in Windows
- wget https://github.com/istio/istio/releases/download/1.27.0/istio-1.27.0-linux-amd64.tar.gz
+''' wget https://github.com/istio/istio/releases/download/1.27.0/istio-1.27.0-linux-amd64.tar.gz
  tar -xvf istio-1.27.0-linux-amd64.tar.gz
  cd istio-1.27.0/
  export PATH="$PWD/bin:$PATH" 
- istioctl version
+ istioctl version '''
 
 ### Install Istio with the demo profile
 istioctl install --set profile=demo -y
