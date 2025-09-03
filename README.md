@@ -2,7 +2,7 @@
 This repository contains the configuration for a Kubernetes-based microservice architecture using Istio for service mesh capabilities.
 
 # Components
-1. Istio Service Mesh
+## 1. Istio Service Mesh
 Istio provides traffic management, security, and observability features for our microservices.
 
 ### Istio Ingress Gateway
@@ -41,7 +41,7 @@ istioctl install --set profile=demo -y
 ### Enable Istio sidecar injection in the default namespace
 kubectl label namespace default istio-injection=enabled
 
-3. Installing Monitoring Tools
+## 2. Installing Monitoring Tools
 
 ## Deploy Kiali dashboard for service mesh visualization:
 
