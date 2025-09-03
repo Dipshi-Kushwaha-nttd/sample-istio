@@ -25,8 +25,19 @@ The sidecar injector automatically injects Envoy proxy containers into applicati
 
 ### Security Features in Istio
 #### Mutual TLS (mTLS)
+  - Encrypts traffic between services (in-transit security)
+  - Verifies identities of both parties
+  - Prevents impersonation or man-in-the-middle attacks
+  - Enables fine-grained authorization based on service identity
 
 - **PeerAuthentication**: Enforces STRICT mTLS between services
+  - Peer Authentication is an Istio resource (PeerAuthentication) that configures how mTLS is enforced between peers (i.e., services).
+
+  **PeerAuthentication modes:**
+  - **DISABLE:**	mTLS is not used
+  - **PERMISSIVE:**	Accepts both plain text and mTLS traffic
+  - **STRICT:**	Only mTLS traffic is accepted
+
 - **Benefits**:
   - Encrypts all service-to-service communication
   - Provides strong identity for each service
@@ -78,17 +89,22 @@ kubectl label namespace default istio-injection=enabled
 
 ## 2. Installing Monitoring Tools
 
-### Deploy Kiali dashboard for service mesh visualization:
+### Deploy Kiali, Grafana, Prometheus dashboard for service mesh visualization:
 
 ```bash
-kubectl apply -f samples/addons <br>
+kubectl apply -f samples/addons
 kubectl rollout status deployment/kiali -n istio-system
+kubectl rollout status deployment/grafana -n istio-system
+kubectl rollout status deployment/prometheus -n istio-system
 ```
 
 ### Access the dashboards:
 
 ```bash
 # Kiali dashboard
+option1: 
+istioctl dashboard kiali
+option2:
 kubectl port-forward svc/kiali -n istio-system 20001:20001
 
 # Grafana dashboard
@@ -96,3 +112,41 @@ kubectl port-forward svc/grafana -n istio-system 3000:3000
 ```
 
 #### Access Kiali at http://localhost:20001 and Grafana at http://localhost:3000.
+
+## 3. Application Deployment
+
+```bash
+# Deploy sample bookinfo application
+
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+
+# To confirm that the Bookinfo application is running, send a request to it by a curl command from some pod, for example from ratings:
+
+kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
+
+```
+#### Create Istio ingress gateway to make the application accessible from outside of Kubernetes cluster.
+
+```bash
+#Create bookinfo Istio ingress gateway
+kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+
+#confirm gateway
+kubectl get gateway
+
+#Access the Application
+http://localhost:80/productpage
+
+```
+#### mTLS Implemtation
+mTLS, or Mutual Transport Layer Security, is a protocol that ensures both the client and server authenticate each other during a connection.
+
+```bash
+kubectl apply -f peer-authentication.yaml
+
+# check mTLS in kiali
+```
+
+
+
+
