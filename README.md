@@ -35,11 +35,11 @@ Kubernetes cluster up and running  kubectl CLI tool installed  Git CLI tool inst
 Install the Istio CLI and deploy Istio components:
 
 ### Install istioctl in Windows
-<pre> ```bash wget https://github.com/istio/istio/releases/download/1.27.0/istio-1.27.0-linux-amd64.tar.gz
-  tar -xvf istio-1.27.0-linux-amd64.tar.gz 
-  cd istio-1.27.0/ 
-  export PATH="$PWD/bin:$PATH" 
-  istioctl version ``` </pre>
+<pre> wget https://github.com/istio/istio/releases/download/1.27.0/istio-1.27.0-linux-amd64.tar.gz
+      tar -xvf istio-1.27.0-linux-amd64.tar.gz 
+      cd istio-1.27.0/ 
+      export PATH="$PWD/bin:$PATH" 
+      istioctl version  </pre>
 
 ### Install Istio with the demo profile
 `istioctl install --set profile=demo -y`
