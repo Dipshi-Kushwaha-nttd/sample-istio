@@ -6,19 +6,20 @@ This repository contains the configuration for a Kubernetes-based microservice a
 Istio provides traffic management, security, and observability features for our microservices.
 
 ### Istio Ingress Gateway
-Namespace: istio-system
-Service: istio-ingressgateway
-Ports:
+**Namespace:** istio-system
+**Service:** istio-ingressgateway
+**Ports:**
 80 → 8080 (HTTP)
 443 → 8443 (HTTPS)
-Function: Acts as the entry point for all external traffic, handles routing to internal services
+**Function:** Acts as the entry point for all external traffic, handles routing to internal services
+
 ### Istio Sidecar Injector
 The sidecar injector automatically injects Envoy proxy containers into application pods, which:
 
-Intercepts all inbound and outbound traffic
-Provides metrics, logs, and traces
-Enforces security policies
-Enables TLS encryption
+*Intercepts all inbound and outbound traffic
+*Provides metrics, logs, and traces
+*Enforces security policies
+*Enables TLS encryption
 
 ### Security Features in Istio
 Mutual TLS (mTLS)
@@ -49,11 +50,11 @@ Git CLI tool installed
 Install the Istio CLI and deploy Istio components:
 
 ### Install istioctl in Windows
-''' wget https://github.com/istio/istio/releases/download/1.27.0/istio-1.27.0-linux-amd64.tar.gz
+` wget https://github.com/istio/istio/releases/download/1.27.0/istio-1.27.0-linux-amd64.tar.gz
  tar -xvf istio-1.27.0-linux-amd64.tar.gz
  cd istio-1.27.0/
  export PATH="$PWD/bin:$PATH" 
- istioctl version '''
+ istioctl version `
 
 ### Install Istio with the demo profile
 istioctl install --set profile=demo -y
