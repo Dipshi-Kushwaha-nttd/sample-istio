@@ -6,9 +6,9 @@ This repository contains the configuration for a Kubernetes-based microservice a
 Istio provides traffic management, security, and observability features for our microservices.
 
 ### Istio Ingress Gateway
-**Namespace:** istio-system  **Service:** istio-ingressgateway  **Ports:**
+**Namespace:** istio-system <br> **Service:** istio-ingressgateway <br> **Ports:**
 80 → 8080 (HTTP)
-443 → 8443 (HTTPS)  **Function:** Acts as the entry point for all external traffic, handles routing to internal services
+443 → 8443 (HTTPS) <br> **Function:** Acts as the entry point for all external traffic, handles routing to internal services
 
 ### Istio Sidecar Injector
 The sidecar injector automatically injects Envoy proxy containers into application pods, which:
